@@ -27,8 +27,9 @@ interface WrapperProps {
 const Wrapper = styled.div<WrapperProps>`
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  width: 97.5%;
+  justify-content: center;
+  align-items: flex-start;
+  width: calc(100% - 0.5em);
   overflow-y: scroll;
   overflow-x: hidden;
   position: relative;
@@ -92,9 +93,9 @@ const Masonry = ({ data }: Props) => {
     type arrayItem = {index: number, sum: number}
     let arrayLengths: arrayItem[] = []
     const reducer = (acc: number, curr: number) => acc + curr
+    const sumArray = (array: item[]) => array.map(item => Number(item.images.downsized.height)).reduce(reducer)
     columnsArray.forEach((array: item[], index: number) => {
-        let sum = array.map(item => Number(item.images.downsized.height))
-          .reduce(reducer)
+        let sum = sumArray(array)
         arrayLengths.push({ index: index, sum: sum })
     })
 
@@ -113,6 +114,7 @@ const Masonry = ({ data }: Props) => {
           columnsArray[array.index].push(
             columnsArray[arrayLengths[index + 1].index].pop()
           )
+          array['sum'] = sumArray(columnsArray[array.index])
         }
       }
     })

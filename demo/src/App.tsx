@@ -6,6 +6,7 @@ function App() {
   return (
     <Giphy
       apiKey={'tvgh9EPC4s4GVgPOgWI9xew4uqZFfNCY'}
+      columns={2}
     />
   )
 }

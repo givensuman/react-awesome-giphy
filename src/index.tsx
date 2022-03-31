@@ -59,6 +59,7 @@ const Giphy = ({
 
     const [ search, setSearch ] = useState('')
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setLoading(true)
         setSearch(e.target.value)
     }
 
@@ -93,22 +94,20 @@ const Giphy = ({
         setLoading(false)
     }
 
-    useEffect(() => {
-        getData(display, 'trending')
-    }, [display])
+    // useEffect(() => {
+    //     getData(display, 'trending')
+    // }, [display])
 
     useEffect(() => {
         const timeout = setTimeout(() => {
             if (search && search.length > 0) {
                 getData(display, 'search', search)
+            } else {
+                getData(display, 'trending')
             }
         }, 1000)
         return () => clearTimeout(timeout)
-    }, [search])
-
-    // useEffect(() => console.log(data), [data])
-
-    useEffect(() => console.log(search), [search])
+    }, [search, display])
 
     return (
         <StoreProvider value={{
@@ -170,11 +169,11 @@ const Giphy = ({
                 color={accentColor}
                 css={`
                     position: absolute;
-                    top: 0;
+                    top: 30%;
                     width: 100%;
-                    height: 100%;
+                    align-self: center;
+                    margin: 0 auto;
                     background-color: ${bgColor};
-                    margin: auto;
                 `}
             />
             
