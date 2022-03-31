@@ -4,9 +4,12 @@ import styled from '@emotion/styled'
 import theme from './styles/theme'
 import './styles/index.css'
 
-import { Row, Col, Loader, Masonry } from './components'
+import { StoreProvider } from './hooks/useStore'
+import { 
+    Row, Col, Loader, Masonry, MasonryItem, Wrapper, Input, Button, Divider, LazyLoad
+} from './components'
 
-interface Props {
+export type Props = {
     apiKey: string,
     callback?: (item: any) => void,
 
@@ -48,70 +51,6 @@ const Giphy = ({
     ...props
 }: Props) => {
 
-    const Wrapper = styled.div`
-        background-color: ${bgColor};
-        color: ${textColor};
-        
-        max-width: ${height}px;
-        min-height: ${width}px;
-        padding-bottom: 0.25em;
-        border-radius: 0.25em;
-        position: relative;
-    `
-
-    const Divider = styled.div`
-        background-color: ${bgAltColor};
-        height: 0.125em;
-        width: 100%;
-    `
-
-    const Input = styled.input`
-        background-color: ${inputColor};
-        color: ${textAltColor};
-
-        width: 90%;
-        margin: 0 auto 0.5em;
-        border-radius: 0.25em;
-        outline: none;
-        border: none;
-        padding: 0.25em;
-        font-size: 0.95rem;
-    `
-
-    interface ButtonProps {
-        active: boolean
-    }
-    const Button = styled.button<ButtonProps>`
-        color: ${textColor};
-        background-color: ${props =>
-            props.active ? buttonColor : 'transparent'
-        };
-
-        
-        border: none; outline: none;
-        padding: 0.5em;
-        border-radius: 0.25em;
-        margin: 0.5em;
-        cursor: pointer;
-        transition: background-color 0.25s;
-
-        &:hover {
-            background-color: ${buttonColor};
-        }
-    `
-
-    const Item = styled.img`
-        margin: 0.25em;
-        border-radius: 0.25em;
-        cursor: pointer;
-        max-width: calc(${100/columns}% - ${columns * 0.25}em);
-        box-sizing: border-box;
-
-        &:hover {
-            border: 0.125em solid ${accentColor};
-        }
-    `
-
     const [ loading, setLoading ] = useState(false)
     const [ data, setData ] = useState([])
     const [ display, setDisplay ] = useState<'gifs' | 'stickers'>('gifs')
@@ -152,22 +91,41 @@ const Giphy = ({
         setLoading(false)
     }
 
-    // useEffect(() => {
-    //     getData('gifs', 'trending')
-    // }, [])
+    useEffect(() => {
+        getData('gifs', 'trending')
+    }, [])
 
-    // useEffect(() => {
-    //     const timeout = setTimeout(() => {
-    //         search.length > 0 && getData(display, 'search', search)
-    //     }, 1000)
-    //     return () => clearTimeout(timeout)
-    // }, [search])
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            if (search && search.length > 0) {
+                getData('gifs', 'search', search)
+            }
+        }, 1000)
+        return () => clearTimeout(timeout)
+    }, [search])
 
     // useEffect(() => console.log(data), [data])
 
     useEffect(() => console.log(search), [search])
 
     return (
+        <StoreProvider value={{
+            apiKey,
+            callback,
+
+            height,
+            width,
+            columns,
+        
+            textColor,
+            textAltColor,
+            bgColor,
+            bgAltColor,
+            buttonColor,
+            inputColor,
+            accentColor,
+            ...props
+        }}>
         <Wrapper>
 
             <Col>
@@ -192,7 +150,6 @@ const Giphy = ({
                 </Row> 
 
                 <Input
-                    key='Gif Search Input'
                     type='text'
                     spellCheck={false}
                     placeholder={'Search GIPHY'}
@@ -205,7 +162,7 @@ const Giphy = ({
 
             <Divider />
 
-            {/* {loading ?
+            {loading ?
 
             <Loader 
                 color={accentColor}
@@ -222,13 +179,13 @@ const Giphy = ({
             :
             
             <Masonry 
-                sizes={data && data.map(() => {
-                    return ({ mq: '0', columns: columns | 2, gutter: 0 })
+                sizes={data && data.map(item => {
+                    return d
                 })}
                 css={`
                     padding-right: 0.5em;
                     margin: 0.5em auto;
-                    max-height: calc(${height}px - 0.5em);
+                    max-height: calc(${height}px - 5.5em);
                     width: 100%;
                     overflow-y: scroll;
                     overflow-x: hidden;
@@ -245,19 +202,20 @@ const Giphy = ({
                         }
                     }
                 }) =>
-                    <Item
-                        className='giphy__masonry-item'
-                        src={item.images.downsized.url}
-                        alt={item.title}
-                        // @ts-ignore
-                        onClick={handleSearch}
-                    />
+                        <MasonryItem
+                            className='giphy__masonry-item'
+                            src={item.images.downsized.url}
+                            alt={item.title}
+                            // @ts-ignore
+                            onClick={() => callback(item)}
+                        />
                 )}
             </Masonry>
 
-            } */}
+            }
 
         </Wrapper>
+        </StoreProvider>
     )
 }
 
