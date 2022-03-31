@@ -78,7 +78,7 @@ The design of this component is based very heavily on Discord's chat window for 
 |textColor |#FEFEFF |Default text color
 |textAltColor |#AFB1B2|Alternate text coloring
 |bgColor |#2F3136|Default background color
-|bgAltColor |#4e4e4e|Alternate background color
+|bgAltColor |#4E4E4E|Alternate background color
 |buttonColor |#4F535C|Button background color for active and hover states
 |inputColor |#212325|Input background color
 |accentColor |#02AEF4|Accent color for item hover states and loading spinner
