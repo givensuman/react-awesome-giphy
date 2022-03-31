@@ -36,6 +36,8 @@ const Giphy = ({
     apiKey,
     callback = item => console.log('react-awesome-giphy:', item),
 
+    limit = 12,
+
     height = 425,
     width = 425,
     columns = 2,
@@ -66,16 +68,16 @@ const Giphy = ({
         query?: string
     ) => {
         const { 
-            limit, offset, rating, randomId, bundle 
+            offset, rating, randomId, bundle 
         } = props
 
         setLoading(true)
         await fetch(
             `https://api.giphy.com/v1/${type}/${endpoint}?` +
             `api_key=${apiKey}` +
+            `&limit=${limit}` +
             [
                 query && `&q=${query}`,
-                limit && `&limit=${limit}`,
                 offset && `&offset=${offset}`,
                 rating && `&rating=${rating}`,
                 randomId && `&random_id=${randomId}`,
