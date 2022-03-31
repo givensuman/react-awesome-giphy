@@ -32,6 +32,7 @@ const ButtonComponent = ({ children, active, ...props }: Props) => {
 
     return (
         <Button
+            className='giphy__button'
             css={`
                 color: ${textColor};
                 background-color: ${active ? buttonColor : 'transparent'};

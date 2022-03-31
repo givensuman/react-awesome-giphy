@@ -31,6 +31,7 @@ const InputComponent = (props: Props) => {
 
     return (
         <Input 
+            className='giphy__input'
             css={`
                 background-color: ${inputColor};
                 color: ${textAltColor};

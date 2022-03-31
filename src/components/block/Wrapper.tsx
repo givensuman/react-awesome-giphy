@@ -21,7 +21,7 @@ const Wrapper = styled.div<WrapperProps>`
 const WrapperComponent = ({ children }: Props) => {
 
     // @ts-ignore
-    const { bgColor, textColor, height, width } = useStore()
+    const { bgColor, textColor, height, width, css } = useStore()
 
     return (
         <Wrapper
@@ -30,6 +30,7 @@ const WrapperComponent = ({ children }: Props) => {
                 color: ${textColor};
                 height: ${height}px;
                 width: ${width}px;
+                ${css}
             `}
         >
             {children}

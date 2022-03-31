@@ -33,12 +33,6 @@
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
-    "@emotion/styled": "^11.8.1",
-    "bricks.js": "^1.8.0",
-    "react-infinite-scroll-component": "^6.1.0",
-    "react-intersection-observer": "^8.33.1",
-    "react-lazy-load": "^3.1.13",
-    "react-lazyload": "^3.2.0",
-    "react-masonry-component": "^6.3.0"
+    "@emotion/styled": "^11.8.1"
   }
 }

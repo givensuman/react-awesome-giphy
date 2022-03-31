@@ -1,12 +1,3 @@
-.giphy__masonry {
-    width: 90%;
-    margin: 20px auto;
-}
-  
-.giphy__masonry-item {
-    width: 50%;
-}
-
 .giphy__masonry::-webkit-scrollbar {
     width: 5px;
     cursor: pointer;

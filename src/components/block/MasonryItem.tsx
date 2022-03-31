@@ -31,6 +31,7 @@ const MasonryItem = (props: Props) => {
 
     return (
         <Item 
+            className='giphy__masonry-item'
             css={`
                 width: calc(100% - 0.5em);
                 margin: 0.125em;

@@ -32,9 +32,8 @@ const Wrapper = styled.div<WrapperProps>`
   width: calc(100% - 0.5em);
   overflow-y: scroll;
   overflow-x: hidden;
-  position: relative;
-  bottom: 0.5em;
   border-radius: 0.5em;
+  margin: 0.5em 0.25em 0;
 
   ${props => props.css}
 `
@@ -133,7 +132,7 @@ const Masonry = ({ data }: Props) => {
     <Wrapper
       className='giphy__masonry'
       css={`
-        max-height: calc(${height}px - 6em);
+        max-height: calc(${height}px - 5.5em);
       `}
     >
 

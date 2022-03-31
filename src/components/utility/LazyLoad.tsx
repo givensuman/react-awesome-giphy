@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from '@emotion/styled'
-import { keyframes } from '@emotion/react'
 
 import useStore from '../../hooks/useStore'
-import { useInView } from 'react-intersection-observer'
 
 interface Props {
     children?: any,
@@ -35,8 +33,6 @@ const LazyLoad = ({ children, height }: Props) => {
     // @ts-ignore
     const { width, columns, bgAltColor } = useStore()
 
-    const { ref, inView } = useInView()
-
     const placeholderRef = useRef<HTMLDivElement>(null)
     const [ ready, setReady ] = useState(false)
     const removePlaceholder = () => {
@@ -46,7 +42,6 @@ const LazyLoad = ({ children, height }: Props) => {
     
     return (
         <Wrapper
-            ref={ref}
             css={`
                 height: ${height}px;
                 width: calc(${width / columns}px - 0.5em);

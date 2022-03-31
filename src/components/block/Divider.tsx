@@ -20,7 +20,8 @@ const DividerComponent = () => {
     const { bgAltColor } = useStore()
 
     return (
-        <Divider 
+        <Divider
+            className='giphy__divider'
             css={`
                 background-color: ${bgAltColor};
             `}

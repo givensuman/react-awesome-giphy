@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 
 import theme from './styles/theme'
-import './styles/index.css'
+import './styles/scrollbar.css'
 
 import { StoreProvider } from './hooks/useStore'
 import { 
@@ -21,6 +21,7 @@ export type Props = {
 
     height?: number,
     width?: number,
+    css?: string,
     columns?: number,
 
     textColor?: string,
@@ -59,7 +60,6 @@ const Giphy = ({
 
     const [ search, setSearch ] = useState('')
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setLoading(true)
         setSearch(e.target.value)
     }
 
@@ -99,6 +99,9 @@ const Giphy = ({
     // }, [display])
 
     useEffect(() => {
+        if (!loading) {
+            setLoading(true)
+        }
         const timeout = setTimeout(() => {
             if (search && search.length > 0) {
                 getData(display, 'search', search)
@@ -178,11 +181,11 @@ const Giphy = ({
             />
             
             :
-            
+
             <Masonry 
                 data={data}
             />
-
+               
             }
 
         </Wrapper>
