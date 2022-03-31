@@ -5,10 +5,6 @@ import useStore from '../../hooks/useStore'
 
 import { MasonryItem, LazyLoad, Col } from '../index'
 
-interface Props {
-  data: any
-}
-
 type item = {
   title: string,
   images: {
@@ -18,6 +14,10 @@ type item = {
       url: string
     }
   }
+}
+
+interface Props {
+  data: any
 }
 
 interface WrapperProps {
@@ -43,7 +43,7 @@ const Masonry = ({ data }: Props) => {
   // const startTime = new Date().getTime()
 
   // @ts-ignore
-  const { columns, height, width } = useStore()
+  const { columns, height, width, callback } = useStore()
 
   const [ content, setContent ] = useState<any[]>([])
 
@@ -144,6 +144,7 @@ const Masonry = ({ data }: Props) => {
             <MasonryItem
               src={item.images.downsized.url}
               alt={item.title}
+              onClick={() => callback(item)}
             />
           </LazyLoad>
         )}

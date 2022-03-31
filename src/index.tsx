@@ -6,7 +6,7 @@ import './styles/index.css'
 
 import { StoreProvider } from './hooks/useStore'
 import { 
-    Row, Col, Loader, Masonry, MasonryItem, Wrapper, Input, Button, Divider, LazyLoad
+    Row, Col, Loader, Masonry, Wrapper, Input, Button, Divider, LazyLoad
 } from './components'
 
 export type Props = {
@@ -94,13 +94,13 @@ const Giphy = ({
     }
 
     useEffect(() => {
-        getData('gifs', 'trending')
-    }, [])
+        getData(display, 'trending')
+    }, [display])
 
     useEffect(() => {
         const timeout = setTimeout(() => {
             if (search && search.length > 0) {
-                getData('gifs', 'search', search)
+                getData(display, 'search', search)
             }
         }, 1000)
         return () => clearTimeout(timeout)
