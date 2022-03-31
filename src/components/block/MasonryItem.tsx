@@ -32,7 +32,8 @@ const MasonryItem = (props: Props) => {
     return (
         <Item 
             css={`
-                max-width: calc(${100/columns}% - ${columns * 0.25}em);
+                max-width: calc(100% - 0.5em);
+                margin: 0.125em;
                 &:hover {
                     border: 0.125em solid ${accentColor};
                 }

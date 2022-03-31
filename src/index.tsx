@@ -179,38 +179,8 @@ const Giphy = ({
             :
             
             <Masonry 
-                sizes={data && data.map(item => {
-                    return d
-                })}
-                css={`
-                    padding-right: 0.5em;
-                    margin: 0.5em auto;
-                    max-height: calc(${height}px - 5.5em);
-                    width: 100%;
-                    overflow-y: scroll;
-                    overflow-x: hidden;
-                `}
-            >
-                {data && data.map((item: {
-                    id: string,
-                    url: string,
-                    title: string,
-                    images: {
-                        downsized: {
-                            url: string,
-                            height: string
-                        }
-                    }
-                }) =>
-                        <MasonryItem
-                            className='giphy__masonry-item'
-                            src={item.images.downsized.url}
-                            alt={item.title}
-                            // @ts-ignore
-                            onClick={() => callback(item)}
-                        />
-                )}
-            </Masonry>
+                data={data}
+            />
 
             }
 
