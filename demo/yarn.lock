@@ -2014,10 +2014,10 @@ quick-lru@^4.0.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
   integrity sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
 
-react-awesome-giphy@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-awesome-giphy/-/react-awesome-giphy-1.0.0.tgz#4d8b9538af5e84e09ae120e62426f23ee702fdad"
-  integrity sha512-m7clq4H2qJmiZ7PDn8xhVlNG1GbRhg5gDAlHvc5QjUDPPrD2sQ0IjjOeKYIg5AcSIEW4gw4WqawKF5oO/S6CEQ==
+react-awesome-giphy@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-awesome-giphy/-/react-awesome-giphy-1.0.1.tgz#be7e59590cda119016872aa6a133625c5e01e6ec"
+  integrity sha512-sOOehcJ88QJNXwCBjI5VvfSgxQS7ucBim76J0nsxxl+gZ9VLVHYQZ/UWlGcEJ7RmHdt1QLNFiP2+9iMY+GCyow==
   dependencies:
     "@emotion/react" "^11.8.2"
     "@emotion/styled" "^11.8.1"
