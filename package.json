@@ -22,7 +22,9 @@
     "refresh": "yarn install && (cd demo && yarn install);",
     "build": "rollup -c",
     "build-watch": "rollup -c -w",
-    "start": "cd demo && yarn dev",
+    "demo-dev": "(cd demo && yarn dev);",
+    "demo-build": "(cd demo && yarn build);",
+    "demo-preview": "(cd demo && yarn build && yarn preview);",
     "dev": "concurrently --kill-others \"yarn build-watch\" \"yarn start\""
   },
   "devDependencies": {
