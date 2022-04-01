@@ -19,10 +19,12 @@ const Header = () => {
                     icon={faGithub}
                 />
                 </a>
+                <a href='https://www.npmjs.com/package/react-awesome-giphy'>
                 <Icon
                     className='icon'
                     icon={faNpm}
                 />
+                </a>
             </div>
 
         </div>

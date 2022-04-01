@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
+import '../../styles/scrollbar.css'
 
 import useStore from '../../hooks/useStore'
 
