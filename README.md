@@ -32,9 +32,9 @@ const App = () => {
     )
 }
 ```
-👇
+renders 👇
 
-![Demo Gif](demo/assets/animation.gif)
+![Demo Gif](https://github.com/givensuman/react-awesome-giphy/blob/master/demo/assets/animation.gif?raw=true)
 
 Note that the API key is the only required prop for this component. If you don't have one, you can check out [this official page](https://support.giphy.com/hc/en-us/articles/360020283431-Request-A-GIPHY-API-Key) for more information.
 
@@ -65,10 +65,18 @@ Additionally, every option available in the Giphy API is accepted as a prop. You
 |prop |default |description
 |--- |--- |---
 |limit |12 |The amount of items to return (keep low to optimize performance)
-|offset |0 |Starting position of the results
+|offset |undefined |Starting position of the results
 |rating |undefined |Allowed [rating content](https://developers.giphy.com/docs/optional-settings/#rating) of the GIFs. Values include 'g', 'pg', 'pg-13', and 'r'
 |randomId |undefined |A unique ID to specify a user
 |bundle |undefined |Returns [renditions](https://developers.giphy.com/docs/optional-settings/#renditions-on-demand) matching specified bundle
+
+Lastly, you may want to sync the internal state of this component with your own UI. You can do that with the `openOnStickers` and `displayCallback` props documented below.
+
+|prop |default |description
+|--- |--- |---
+|openOnStickers |false |Determines if the component should open display GIPHY stickers rather than GIFs
+|displayCallback |undefined |A callback function that gets called when the display buttons are pressed. Must take the state as an input, which is necessarily either `'gifs'` or `'stickers'`
+
 ## Styling Props 🎨
 
 The design of this component is based very heavily on Discord's chat window for GIFs. However, if that doesn't float your boat, there's props for basically every aspect of the theme.
@@ -85,7 +93,7 @@ The design of this component is based very heavily on Discord's chat window for 
 
 Here is a diagram laying that out:
 
-![Diagram](demo/assets/colors.png)
+![Diagram](https://github.com/givensuman/react-awesome-giphy/blob/master/demo/assets/colors.png?raw=true)
 
 Additional styling props include:
 
@@ -97,7 +105,7 @@ Additional styling props include:
 
 Lastly, there is a `css` prop that can be used to inject css strings directly into component. This targets the component wrapper, so children can be accessed within this prop by their classnames, diagrammed below. Every classname starts with ".giphy" and a double underscore.
 
-![Diagram](demo/assets/classes.png)
+![Diagram](https://github.com/givensuman/react-awesome-giphy/blob/master/demo/assets/classes.png?raw=true)
 
 Note that directly overwriting class styles is not recommended. Here is an example of how the `css` prop can be used:
 
