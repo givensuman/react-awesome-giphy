@@ -79,7 +79,7 @@ Lastly, you may want to sync the internal state of this component with your own 
 
 |prop |default |description
 |--- |--- |---
-|`display` |'gifs' |Determines if the component should open to display GIPHY stickers rather than GIFs. Valid values are `'gifs'` or '`stickers`'
+|`display` |'gifs' |Determines if the component should open to display GIPHY stickers rather than GIFs. Valid values are `'gifs'` or `'stickers'`
 |`displayCallback` |undefined |A callback function that gets called when the display buttons are pressed. Must take the current display state as an input, which is necessarily either `'gifs'` or `'stickers'`
 
 In other words, `display` is how your UI interacts with the internal component state, and `displayCallback` is how the internal state interacts with your UI. If you want to simply set the default display, just pass `display` a stateless string.
