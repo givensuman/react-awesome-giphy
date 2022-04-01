@@ -75,12 +75,48 @@ Additionally, every option available in the Giphy API is accepted as a prop. You
 |`randomId` |undefined |A unique ID to specify a user
 |`bundle` |undefined |Returns [renditions](https://developers.giphy.com/docs/optional-settings/#renditions-on-demand) matching specified bundle
 
-Lastly, you may want to sync the internal state of this component with your own UI. You can do that with the `openOnStickers` and `displayCallback` props documented below.
+Lastly, you may want to sync the internal state of this component with your own UI. You can do that with the `display` and `displayCallback` props documented below.
 
 |prop |default |description
 |--- |--- |---
-|`openOnStickers` |false |Determines if the component should open to display GIPHY stickers rather than GIFs
-|`displayCallback` |undefined |A callback function that gets called when the display buttons are pressed. Must take the state as an input, which is necessarily either `'gifs'` or `'stickers'`
+|`display` |'gifs' |Determines if the component should open to display GIPHY stickers rather than GIFs. Valid values are `'gifs'` or '`stickers`'
+|`displayCallback` |undefined |A callback function that gets called when the display buttons are pressed. Must take the current display state as an input, which is necessarily either `'gifs'` or `'stickers'`
+
+In other words, `display` is how your UI interacts with the internal component state, and `displayCallback` is how the internal state interacts with your UI. If you want to simply set the default display, just pass `display` a stateless string.
+
+You can see these props in action in the demo, but here is an example of how they might be useful:
+
+```jsx
+import React from 'react'
+import Giphy from 'react-awesome-giphy'
+
+const App = () => {
+    const [displayState, setDisplayState] = React.useState('gifs')
+    const handleDisplay = value => {
+        // Value must be 'gifs' or 'stickers'
+        setDisplayState(value)
+    }
+
+    return (
+        <button
+            onClick={() => handleDisplay('gifs')}
+        >
+            GIFs
+        </button>
+        <button
+            onClick={() => handleDisplay('stickers')}
+        >
+            Stickers
+        </button>
+
+        <Giphy
+            apiKey={process.env.API_KEY}
+            display={displayState}
+            displayCallback={handleDisplay}
+        />
+    )
+}
+```
 
 ### Styling Props 🎨
 

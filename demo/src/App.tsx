@@ -22,7 +22,7 @@ function App() {
       apiKey={import.meta.env.VITE_API_KEY}
       columns={2}
       displayCallback={(state: 'gifs' | 'stickers') => setActive(state)}
-      display={active}
+      display={'stickers'}
       css={`
         box-shadow: -5px 5px 5px grey;
       `}
