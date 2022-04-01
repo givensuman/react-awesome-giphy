@@ -3,7 +3,7 @@ import './Footer.scss'
 
 import { faNoteSticky, faClapperboard, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
-import { Icon } from '../Common'
+import { Icon } from '../Icon'
 
 interface Props {
     active: 'gifs' | 'stickers' | null,

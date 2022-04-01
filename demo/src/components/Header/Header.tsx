@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.scss'
-import { Icon } from '../Common'
+import { Icon } from '../Icon'
 
 import { faGithub, faNpm } from '@fortawesome/free-brands-svg-icons'
 
