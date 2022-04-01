@@ -18,6 +18,11 @@ Features:
 - Production ready ✔️
 - Masonry loadout and lazy-loading built-in 🧱
 
+## Demo 💿
+Check out the demo [here](https://react-awesome-giphy.netlify.app)!
+
+## Usage 🍳
+
 The API is simple. Import the component, attach your Giphy API key as a prop, and you're done!
 
 ```jsx
@@ -40,7 +45,7 @@ Note that the API key is the only required prop for this component. If you don't
 
 ---
 
-## Functional Props 🎣
+### Functional Props 🎣
 
 Perhaps the most important prop is `callback`, which is a function that handles the GIF or sticker data. The callback function you pass is called in the `onClick` of any item displayed in the masonry, and can (and probably should) take the particular item's data as an input. By default, a `console.log` is run.
 
@@ -64,32 +69,32 @@ Additionally, every option available in the Giphy API is accepted as a prop. You
 
 |prop |default |description
 |--- |--- |---
-|limit |12 |The amount of items to return (keep low to optimize performance)
-|offset |undefined |Starting position of the results
-|rating |undefined |Allowed [rating content](https://developers.giphy.com/docs/optional-settings/#rating) of the GIFs. Values include 'g', 'pg', 'pg-13', and 'r'
-|randomId |undefined |A unique ID to specify a user
-|bundle |undefined |Returns [renditions](https://developers.giphy.com/docs/optional-settings/#renditions-on-demand) matching specified bundle
+|`limit` |12 |The amount of items to return (keep low to optimize performance)
+|`offset` |undefined |Starting position of the results
+|`rating` |undefined |Allowed [rating content](https://developers.giphy.com/docs/optional-settings/#rating) of the GIFs. Values include 'g', 'pg', 'pg-13', and 'r'
+|`randomId` |undefined |A unique ID to specify a user
+|`bundle` |undefined |Returns [renditions](https://developers.giphy.com/docs/optional-settings/#renditions-on-demand) matching specified bundle
 
 Lastly, you may want to sync the internal state of this component with your own UI. You can do that with the `openOnStickers` and `displayCallback` props documented below.
 
 |prop |default |description
 |--- |--- |---
-|openOnStickers |false |Determines if the component should open display GIPHY stickers rather than GIFs
-|displayCallback |undefined |A callback function that gets called when the display buttons are pressed. Must take the state as an input, which is necessarily either `'gifs'` or `'stickers'`
+|`openOnStickers` |false |Determines if the component should open to display GIPHY stickers rather than GIFs
+|`displayCallback` |undefined |A callback function that gets called when the display buttons are pressed. Must take the state as an input, which is necessarily either `'gifs'` or `'stickers'`
 
-## Styling Props 🎨
+### Styling Props 🎨
 
 The design of this component is based very heavily on Discord's chat window for GIFs. However, if that doesn't float your boat, there's props for basically every aspect of the theme.
 
 |prop |default |description
 |--- |--- |---
-|textColor |#FEFEFF |Default text color
-|textAltColor |#AFB1B2|Alternate text coloring
-|bgColor |#2F3136|Default background color
-|bgAltColor |#4E4E4E|Alternate background color
-|buttonColor |#4F535C|Button background color for active and hover states
-|inputColor |#212325|Input background color
-|accentColor |#02AEF4|Accent color for item hover states and loading spinner
+|`textColor` |#FEFEFF |Default text color
+|`textAltColor` |#AFB1B2|Alternate text coloring
+|`bgColor` |#2F3136|Default background color
+|`bgAltColor` |#4E4E4E|Alternate background color
+|`buttonColor` |#4F535C|Button background color for active and hover states
+|`inputColor` |#212325|Input background color
+|`accentColor` |#02AEF4|Accent color for item hover states and loading spinner
 
 Here is a diagram laying that out:
 
@@ -99,9 +104,9 @@ Additional styling props include:
 
 |prop |default |description
 |--- |--- |---
-|height |425 |Height of the component (in px)
-|width |425 |Width of the component (in px)
-|columns |2 |Number of columns to split results into
+|`height` |425 |Height of the component (in px)
+|`width` |425 |Width of the component (in px)
+|`columns` |2 |Number of columns to split results into
 
 Lastly, there is a `css` prop that can be used to inject css strings directly into component. This targets the component wrapper, so children can be accessed within this prop by their classnames, diagrammed below. Every classname starts with ".giphy" and a double underscore.
 
