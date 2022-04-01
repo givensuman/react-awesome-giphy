@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import styled from '@emotion/styled'
 
 import theme from './styles/theme'
 import './styles/scrollbar.css'
 
 import { StoreProvider } from './hooks/useStore'
 import { 
-    Row, Col, Loader, Masonry, Wrapper, Input, Button, Divider, LazyLoad
+    Row, Col, Loader, Masonry, Wrapper, Input, Button, Divider
 } from './components'
 
 export type Props = {
     apiKey: string,
     callback?: (item: any) => void,
+
+    openOnStickers?: boolean,
+    displayCallback?: (state: 'gifs' | 'stickers') => void,
+    // updateDisplay?: (state: 'gifs' | 'stickers') => void,
 
     limit?: number,
     offset?: number,
@@ -36,6 +39,7 @@ export type Props = {
 const Giphy = ({
     apiKey,
     callback = item => console.log('react-awesome-giphy:', item),
+    openOnStickers = false,
 
     limit = 12,
 
@@ -56,7 +60,7 @@ const Giphy = ({
 
     const [ loading, setLoading ] = useState(false)
     const [ data, setData ] = useState([])
-    const [ display, setDisplay ] = useState<'gifs' | 'stickers'>('gifs')
+    const [ display, setDisplay ] = useState<'gifs' | 'stickers'>(openOnStickers ? 'stickers' : 'gifs')
 
     const [ search, setSearch ] = useState('')
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -94,9 +98,11 @@ const Giphy = ({
         setLoading(false)
     }
 
-    // useEffect(() => {
-    //     getData(display, 'trending')
-    // }, [display])
+    useEffect(() => {
+        if (props.displayCallback) {
+            props.displayCallback(display)
+        } 
+    }, [display])
 
     useEffect(() => {
         if (!loading) {

@@ -132,7 +132,7 @@ const Masonry = ({ data }: Props) => {
     <Wrapper
       className='giphy__masonry'
       css={`
-        max-height: calc(${height}px - 5.5em);
+        max-height: calc(${height}px - 6.25em);
       `}
     >
 
