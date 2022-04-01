@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Giphy from 'react-awesome-giphy'
+import Giphy from '../../src/index'
 
 import { Header, Footer } from './components'
 
@@ -22,7 +22,7 @@ function App() {
       apiKey={import.meta.env.VITE_API_KEY}
       columns={2}
       displayCallback={(state: 'gifs' | 'stickers') => setActive(state)}
-      openOnStickers={active == 'stickers'}
+      display={active}
       css={`
         box-shadow: -5px 5px 5px grey;
       `}

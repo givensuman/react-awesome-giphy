@@ -12,8 +12,8 @@ export type Props = {
     apiKey: string,
     callback?: (item: any) => void,
 
-    openOnStickers?: boolean,
     displayCallback?: (state: 'gifs' | 'stickers') => void,
+    display?: 'gifs' | 'stickers',
     // updateDisplay?: (state: 'gifs' | 'stickers') => void,
 
     limit?: number,
@@ -38,8 +38,9 @@ export type Props = {
 
 const Giphy = ({
     apiKey,
+
     callback = item => console.log('react-awesome-giphy:', item),
-    openOnStickers = false,
+    display = 'gifs',
 
     limit = 12,
 
@@ -60,7 +61,7 @@ const Giphy = ({
 
     const [ loading, setLoading ] = useState(false)
     const [ data, setData ] = useState([])
-    const [ display, setDisplay ] = useState<'gifs' | 'stickers'>(openOnStickers ? 'stickers' : 'gifs')
+    const [ currentDisplay, setCurrentDisplay ] = useState<'gifs' | 'stickers'>(display)
 
     const [ search, setSearch ] = useState('')
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -100,8 +101,12 @@ const Giphy = ({
 
     useEffect(() => {
         if (props.displayCallback) {
-            props.displayCallback(display)
+            props.displayCallback(currentDisplay)
         } 
+    }, [currentDisplay])
+
+    useEffect(() => {
+        setCurrentDisplay(display)
     }, [display])
 
     useEffect(() => {
@@ -110,13 +115,13 @@ const Giphy = ({
         }
         const timeout = setTimeout(() => {
             if (search && search.length > 0) {
-                getData(display, 'search', search)
+                getData(currentDisplay, 'search', search)
             } else {
-                getData(display, 'trending')
+                getData(currentDisplay, 'trending')
             }
         }, 1000)
         return () => clearTimeout(timeout)
-    }, [search, display])
+    }, [search, currentDisplay])
 
     return (
         <StoreProvider value={{
@@ -142,17 +147,17 @@ const Giphy = ({
 
                 <Row centerx>
                     <Button
-                        active={display == 'gifs'}
+                        active={currentDisplay == 'gifs'}
                         onClick={() => {
-                            setDisplay('gifs')
+                            setCurrentDisplay('gifs')
                         }}
                     >
                         GIFs
                     </Button>
                     <Button
-                        active={display == 'stickers'}
+                        active={currentDisplay == 'stickers'}
                         onClick={() => {
-                            setDisplay('stickers')
+                            setCurrentDisplay('stickers')
                         }}
                     >
                         Stickers
