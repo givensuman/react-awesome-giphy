@@ -41,6 +41,9 @@
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
-    "@emotion/styled": "^11.8.1"
+    "@emotion/styled": "^11.8.1",
+    "@types/react-lazy-load-image-component": "^1.5.2",
+    "masonic": "^3.6.4",
+    "react-lazy-load-image-component": "^1.5.4"
   }
 }

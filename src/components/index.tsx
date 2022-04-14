@@ -1,5 +1,5 @@
 import { Row, Col } from './composition/Flex'
-import Masonry from './composition/Masonry'
+import Masonry from './block/Masonry'
 
 import LazyLoad from './utility/LazyLoad'
 

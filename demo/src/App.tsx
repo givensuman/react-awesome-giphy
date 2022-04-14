@@ -20,7 +20,6 @@ function App() {
     <Giphy
       // @ts-ignore
       apiKey={import.meta.env.VITE_API_KEY}
-      columns={2}
       displayCallback={(state: 'gifs' | 'stickers') => setActive(state)}
       display={active}
       css={`

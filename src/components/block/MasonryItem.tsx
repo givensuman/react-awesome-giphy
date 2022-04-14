@@ -17,9 +17,10 @@ interface ItemProps {
 
 const Item = styled.img<ItemProps>`
     margin: 0.25em;
-    border-radius: 0.25em;
+    border-radius: 0.5em;
     cursor: pointer;
     box-sizing: border-box;
+    border: 0.125em solid transparent;
 
     ${props => props.css}
 `
@@ -36,7 +37,7 @@ const MasonryItem = (props: Props) => {
                 width: calc(100% - 0.5em);
                 margin: 0.125em;
                 &:hover {
-                    border: 0.125em solid ${accentColor};
+                    border-color: ${accentColor};
                 }
             `}
             {...props}
