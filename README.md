@@ -144,7 +144,7 @@ Additional styling props include:
 |`width` |425 |Width of the component (in px)
 |`columns` |2 |Number of columns to split results into
 
-Lastly, there is a `css` prop that can be used to inject css strings directly into component. This targets the component wrapper, so children can be accessed within this prop by their classnames, diagrammed below. Every classname starts with ".giphy" and a double underscore.
+Lastly, there is a `css` prop that can be used to inject css strings directly into the component. This targets the component wrapper, so children can be accessed within this prop by their classnames, diagrammed below. Every classname starts with ".giphy" and a double underscore.
 
 ![Diagram](https://github.com/givensuman/react-awesome-giphy/blob/master/demo/assets/classes.png?raw=true)
 
