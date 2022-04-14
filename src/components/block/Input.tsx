@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
 
 import useStore from '../../hooks/useStore'
 
 interface Props extends 
     React.InputHTMLAttributes<HTMLInputElement> {
+        callback: (input: string) => void
 }
 
 interface InputProps {
@@ -26,17 +27,24 @@ const Input = styled.input<InputProps>`
 
 const InputComponent = (props: Props) => {
 
+    const [ input, setInput ] = useState('')
+
     // @ts-ignore
     const { inputColor, textAltColor } = useStore()
 
     return (
-        <Input 
+        <Input
+            value={input}
             className='giphy__input'
             css={`
                 background-color: ${inputColor};
                 color: ${textAltColor};
             `}
             {...props}
+            onChange={e => {
+                setInput(e.target.value)
+                props.callback(e.target.value)
+            }}
         />
     )
 }

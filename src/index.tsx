@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 import theme from './styles/theme'
 import './styles/scrollbar.css'
@@ -63,9 +63,24 @@ const Giphy = ({
     const [ data, setData ] = useState([])
     const [ currentDisplay, setCurrentDisplay ] = useState<'gifs' | 'stickers'>(display)
 
-    const [ search, setSearch ] = useState('')
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value)
+    const isTyping = useRef<boolean>()
+    const timeout = useRef<any>()
+    const handleSearch = (input: string) => {
+        const runSearch = async () => {
+            await getData(currentDisplay, 'search', input)
+            isTyping.current = false
+        }
+
+        if (isTyping.current) { 
+            clearTimeout(timeout.current)
+            timeout.current = setTimeout(runSearch, 500)
+        }
+        else {
+            setLoading(true)
+            isTyping.current = true 
+            timeout.current = setTimeout(runSearch, 500)
+        }
+        
     }
 
     const getData = async (
@@ -113,15 +128,8 @@ const Giphy = ({
         if (!loading) {
             setLoading(true)
         }
-        const timeout = setTimeout(() => {
-            if (search && search.length > 0) {
-                getData(currentDisplay, 'search', search)
-            } else {
-                getData(currentDisplay, 'trending')
-            }
-        }, 1000)
-        return () => clearTimeout(timeout)
-    }, [search, currentDisplay])
+        setTimeout(() => getData(currentDisplay, 'trending'), 500)
+    }, [currentDisplay])
 
     return (
         <StoreProvider value={{
@@ -168,8 +176,7 @@ const Giphy = ({
                     type='text'
                     spellCheck={false}
                     placeholder={'Search GIPHY'}
-                    value={search}
-                    onChange={handleSearch}
+                    callback={handleSearch}
                 />
 
             </Col>
