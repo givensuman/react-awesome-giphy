@@ -19,7 +19,7 @@
     "component"
   ],
   "scripts": {
-    "refresh": "yarn install && (cd demo && yarn install);",
+    "setup": "yarn install && (cd demo && yarn install);",
     "build": "rollup -c",
     "build-watch": "rollup -c -w",
     "demo-dev": "(cd demo && yarn dev);",
