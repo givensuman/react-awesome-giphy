@@ -21,7 +21,8 @@ const Footer = ({ active, setActive }: Props) => {
             />
             <Icon
                 className='icon'
-                 icon={faPaperPlane}
+                icon={faPaperPlane}
+                style={{ marginLeft: '5px' }}
             />
         </div>
 
