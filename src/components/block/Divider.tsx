@@ -10,6 +10,7 @@ interface DividerProps {
 const Divider = styled.div<DividerProps>`
     height: 0.125em;
     width: 100%;
+    opacity: 0.3;
 
     ${props => props.css}
 `
