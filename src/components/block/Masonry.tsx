@@ -4,6 +4,8 @@ import { Masonry } from 'masonic'
 
 import useStore from '../../hooks/useStore'
 
+import { LazyLoad } from '../'
+
 interface MasonryItemProps {
   width: number,
   index: number,
@@ -33,18 +35,27 @@ const MasonryItem = ({ data, width }: MasonryItemProps) => {
   const { callback, accentColor } = useStore()
 
   return (
-      <Gif
-        className='giphy__masonry-item'
-        alt={data.title}
-        src={data.images.downsized.url}
+      <LazyLoad
+        height={
+          Number(data.images.downsized.height) * (
+            (width - 10) / Number(data.images.downsized.width)
+          )
+        }
         width={width - 10}
-        onClick={() => callback(data)}
-        css={`
-          &:hover {
-            border-color: ${accentColor};
-          }
-        `}
-      />
+      >
+        <Gif
+          className='giphy__masonry-item'
+          alt={data.title}
+          src={data.images.downsized.url}
+          width={width - 10}
+          onClick={() => callback(data)}
+          css={`
+            &:hover {
+              border-color: ${accentColor};
+            }
+          `}
+        />
+      </LazyLoad>
   )
 }
 

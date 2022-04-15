@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styled from '@emotion/styled'
 
 import useStore from '../../hooks/useStore'
 
 interface Props {
     children?: any,
-    height: number
+    height: number,
+    width: number
 }
 
 interface ComponentProps {
@@ -28,10 +29,10 @@ const Skeleton = styled.div<ComponentProps>`
     ${props => props.css}
 `
 
-const LazyLoad = ({ children, height }: Props) => {
+const LazyLoad = ({ children, height, width }: Props) => {
 
     // @ts-ignore
-    const { width, columns, bgAltColor } = useStore()
+    const { bgAltColor } = useStore()
 
     const placeholderRef = useRef<HTMLDivElement>(null)
     const [ ready, setReady ] = useState(false)
@@ -44,7 +45,7 @@ const LazyLoad = ({ children, height }: Props) => {
         <Wrapper
             css={`
                 height: ${height}px;
-                width: calc(${width / columns}px - 0.5em);
+                width: ${width}px;
             `}
         >
             {!ready && placeholderRef &&
