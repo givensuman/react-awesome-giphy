@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Giphy from '../../src/'
+import Giphy from 'react-awesome-giphy'
 
 import { Header, Footer } from './components'
 

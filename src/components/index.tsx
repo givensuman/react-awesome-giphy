@@ -8,7 +8,6 @@ import Wrapper from './block/Wrapper'
 import Input from './block/Input'
 import Button from './block/Button'
 import Divider from './block/Divider'
-import MasonryItem from './block/MasonryItem'
 
 export { 
     Row,
@@ -21,6 +20,5 @@ export {
     Wrapper,
     Input,
     Button,
-    Divider,
-    MasonryItem
+    Divider
 }

@@ -1,6 +1,6 @@
 {
   "name": "react-awesome-giphy",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "React wrapper for the Giphy API",
   "main": "dist/index.js",
   "author": "Given Suman",

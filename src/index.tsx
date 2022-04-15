@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 
 import theme from './styles/theme'
-import './styles/scrollbar.css'
 
 import { StoreProvider } from './hooks/useStore'
 import { 

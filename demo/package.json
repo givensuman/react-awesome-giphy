@@ -14,7 +14,7 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "node-sass": "^7.0.1",
     "react": "^17.0.2",
-    "react-awesome-giphy": "^1.0.4",
+    "react-awesome-giphy": "^2.0.0",
     "react-dom": "^17.0.2",
     "sass": "^1.49.10"
   },

@@ -38,10 +38,10 @@ const MasonryItem = ({ data, width }: MasonryItemProps) => {
       <LazyLoad
         height={
           Number(data.images.downsized.height) * (
-            (width - 10) / Number(data.images.downsized.width)
+            (width) / Number(data.images.downsized.width)
           )
         }
-        width={width - 10}
+        width={width}
       >
         <Gif
           className='giphy__masonry-item'
@@ -72,27 +72,27 @@ const Wrapper = styled.div<{height: number, scrollbarColor: string}>`
   position: relative;
   top: 10px;
 
-  &:-webkit-scrollbar {
+  &::-webkit-scrollbar {
     width: 5px;
       cursor: pointer;
   }
 
-  &:-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track {
     background-color: transparent;
   }
 
-  &:-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb {
     background: ${props => props.scrollbarColor};
     border-radius: 0.5em;
     opacity: 0.3;
   }
 
-  &:-webkit-scrollbar-thumb:hover {
+  &::-webkit-scrollbar-thumb:hover {
     opacity: 1;
       width: 10px;
   }
 
-  &:-webkit-scrollbar-button {
+  &::-webkit-scrollbar-button {
     display: none;
   }
 `
