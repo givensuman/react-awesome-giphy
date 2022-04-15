@@ -2,7 +2,6 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { Masonry } from 'masonic'
 
-import '../../styles/scrollbar.css'
 import useStore from '../../hooks/useStore'
 
 interface MasonryItemProps {
@@ -35,6 +34,7 @@ const MasonryItem = ({ data, width }: MasonryItemProps) => {
 
   return (
       <Gif
+        className='giphy__masonry-item'
         alt={data.title}
         src={data.images.downsized.url}
         width={width - 10}
