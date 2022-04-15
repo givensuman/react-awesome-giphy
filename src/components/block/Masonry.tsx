@@ -52,7 +52,7 @@ interface Props {
   data: any[]
 }
 
-const Wrapper = styled.div<{height: number}>`
+const Wrapper = styled.div<{height: number, scrollbarColor: string}>`
   overflow-x: hidden;
   overflow-y: scroll;
   max-height: ${props => `calc(${props.height}px - 100px);`}
@@ -60,15 +60,43 @@ const Wrapper = styled.div<{height: number}>`
   margin: auto;
   position: relative;
   top: 10px;
+
+  &:-webkit-scrollbar {
+    width: 5px;
+      cursor: pointer;
+  }
+
+  &:-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &:-webkit-scrollbar-thumb {
+    background: ${props => props.scrollbarColor};
+    border-radius: 0.5em;
+    opacity: 0.3;
+  }
+
+  &:-webkit-scrollbar-thumb:hover {
+    opacity: 1;
+      width: 10px;
+  }
+
+  &:-webkit-scrollbar-button {
+    display: none;
+  }
 `
 
 const MasonryComponent: React.FC<Props> = ({ data }) => {
 
   // @ts-ignore
-  const { columns, width, height } = useStore()
+  const { columns, width, height, bgAltColor } = useStore()
 
   return (
-    <Wrapper height={height} className='giphy__masonry'>
+    <Wrapper 
+      height={height}
+      scrollbarColor={bgAltColor} 
+      className='giphy__masonry'
+    >
       <Masonry 
         items={data} 
         render={MasonryItem} 
