@@ -2116,10 +2116,10 @@ raf-schd@^4.0.3:
   resolved "https://registry.yarnpkg.com/raf-schd/-/raf-schd-4.0.3.tgz#5d6c34ef46f8b2a0e880a8fcdb743efc5bfdbc1a"
   integrity sha512-tQkJl2GRWh83ui2DiPTJz9wEiMN20syf+5oKfB03yYP7ioZcJwsIK8FjrtLwH1m7C7e+Tt2yYBlrOpdT+dyeIQ==
 
-react-awesome-giphy@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/react-awesome-giphy/-/react-awesome-giphy-2.0.3.tgz#b2f2889e8a1dfa8f0e51ec9b9b96fe72734c00c7"
-  integrity sha512-xjGIVk4b8DiyWjZtUuVKw26OxsJREnEYKQSB3NNd9ly/J+8hKGvf6q317HmH3Drc7NLSG2b6xVLL+LAHIC6+zQ==
+react-awesome-giphy@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/react-awesome-giphy/-/react-awesome-giphy-2.0.4.tgz#55ccbd632040821366218853e7ebc1880688fe20"
+  integrity sha512-oyN6v3gLunQ57LeUGARhVsi+i0UFCs0gIQLaplR7XM8a+ByMCD+3Q27G2+OyhtaseOboecgRSNi9qHe0gwXnDg==
   dependencies:
     "@emotion/react" "^11.8.2"
     "@emotion/styled" "^11.8.1"
