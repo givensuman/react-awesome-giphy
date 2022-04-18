@@ -62,11 +62,19 @@ const Giphy = ({
     const [ data, setData ] = useState([])
     const [ currentDisplay, setCurrentDisplay ] = useState<'gifs' | 'stickers'>(display)
 
-    const isTyping = useRef<boolean>()
+    const search = useRef<string>("")
+    const isTyping = useRef<boolean>(false)
     const timeout = useRef<any>()
+
     const handleSearch = (input: string) => {
+        search.current = input
+        
         const runSearch = async () => {
-            await getData(currentDisplay, 'search', input)
+            if (input.length > 0) {
+                await getData(currentDisplay, 'search', input)
+            } else {
+                await getData(currentDisplay, 'trending')
+            }
             isTyping.current = false
         }
 
@@ -78,8 +86,7 @@ const Giphy = ({
             setLoading(true)
             isTyping.current = true 
             timeout.current = setTimeout(runSearch, 500)
-        }
-        
+        } 
     }
 
     const getData = async (
@@ -127,8 +134,15 @@ const Giphy = ({
         if (!loading) {
             setLoading(true)
         }
-        setTimeout(() => getData(currentDisplay, 'trending'), 500)
+        console.log(search.current)
+        if (search.current.length == 0) {
+            setTimeout(() => getData(currentDisplay, 'trending'), 500)
+        } else {
+            setTimeout(() => getData(currentDisplay, 'search', search.current))
+        }
     }, [currentDisplay])
+
+    useEffect(() => console.log(search.current), [search])
 
     return (
         <StoreProvider value={{
