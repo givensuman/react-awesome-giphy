@@ -16,18 +16,18 @@ function App() {
       minHeight: '425px',
       minWidth: '425px'
     }}>
-    {active && 
-    <Giphy
-      // @ts-ignore
-      apiKey={import.meta.env.VITE_API_KEY}
-      displayCallback={(state: 'gifs' | 'stickers') => setActive(state)}
-      display={active}
-      css={`
-        box-shadow: -5px 5px 5px grey;
-      `}
-    />
-    }
-  </div>
+      {active && 
+      <Giphy
+        // @ts-ignore
+        apiKey={import.meta.env.VITE_API_KEY}
+        displayCallback={(state: 'gifs' | 'stickers') => setActive(state)}
+        display={active}
+        css={`
+          box-shadow: -5px 5px 5px grey;
+        `}
+      />
+      }
+    </div>
 
     <Footer active={active} setActive={setActive} />
 

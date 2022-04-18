@@ -134,15 +134,12 @@ const Giphy = ({
         if (!loading) {
             setLoading(true)
         }
-        console.log(search.current)
         if (search.current.length == 0) {
             setTimeout(() => getData(currentDisplay, 'trending'), 500)
         } else {
-            setTimeout(() => getData(currentDisplay, 'search', search.current))
+            setTimeout(() => getData(currentDisplay, 'search', search.current), 500)
         }
     }, [currentDisplay])
-
-    useEffect(() => console.log(search.current), [search])
 
     return (
         <StoreProvider value={{
