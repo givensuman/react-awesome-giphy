@@ -4,7 +4,7 @@ import { Masonry } from 'masonic'
 
 import useStore from '../../hooks/useStore'
 
-import { LazyLoad } from '../'
+import LazyLoad from '../utility/LazyLoad'
 
 interface MasonryItemProps {
   width: number,
